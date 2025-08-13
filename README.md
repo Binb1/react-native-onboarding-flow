@@ -1,4 +1,13 @@
-# React Native Onboarding Flow 🚀
+
+[![npm version](https://badge.fury.io/js/react-native-onboarding-flow.svg)](https://badge.fury.io/js/react-native-onboarding-flow)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-onboarding-flow.svg)](https://npmjs.org/package/react-native-onboarding-flow)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Package Size](https://img.shields.io/bundlephobia/minzip/react-native-onboarding-flow)](https://bundlephobia.com/package/react-native-onboarding-flow)
+[![React Native](https://img.shields.io/badge/React%20Native-0.60+-blue.svg)](https://reactnative.dev/)
+[![Dependencies Status](https://img.shields.io/librariesio/github/binb1/react-native-onboarding-flow)](https://libraries.io/github/binb1/react-native-onboarding-flow)
+[![Known Vulnerabilities](https://snyk.io/test/github/binb1/react-native-onboarding-flow/badge.svg)](https://snyk.io/test/github/binb1/react-native-onboarding-flow)
+
+# React Native Onboarding Flow
 
 Beautiful, customizable onboarding flows for **Expo React Native** apps with smooth animations and video support.
 
