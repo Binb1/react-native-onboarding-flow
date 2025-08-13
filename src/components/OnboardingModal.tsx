@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
+  AccessibilityInfo,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { OnboardingModalProps } from '../types';
@@ -22,9 +23,18 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
   onClose,
   closeable,
   showProgress,
+  theme,
 }) => {
   const isLastSlide = currentSlide === slides.length - 1;
   const currentSlideData = slides[currentSlide];
+
+  // Announce slide changes to screen readers
+  React.useEffect(() => {
+    if (visible && currentSlideData) {
+      const announcement = `${currentSlideData.title}. Slide ${currentSlide + 1} of ${slides.length}. ${currentSlideData.description}`;
+      AccessibilityInfo.announceForAccessibility(announcement);
+    }
+  }, [currentSlide, visible, currentSlideData, slides.length]);
 
   const renderProgressDots = () => {
     if (!showProgress) return null;
@@ -37,7 +47,9 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
             style={[
               styles.progressDot,
               {
-                backgroundColor: index <= currentSlide ? '#6B8E5A' : '#E5E5E5',
+                backgroundColor: index <= currentSlide 
+                  ? (theme?.progressDotActiveColor || '#6B8E5A') 
+                  : (theme?.progressDotColor || '#E5E5E5'),
                 width: index === currentSlide ? 24 : 8,
               },
             ]}
@@ -54,13 +66,13 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
       presentationStyle="pageSheet"
       onRequestClose={closeable ? onClose : undefined}
     >
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={[styles.container, { backgroundColor: theme?.backgroundColor || 'white' }]}>
         {/* Header with optional close button */}
         <View style={styles.header}>
           <View style={styles.headerSpacer} />
           {closeable && onClose && (
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-              <Ionicons name="close" size={24} color="#666" />
+              <Ionicons name="close" size={24} color={theme?.closeButtonColor || '#666'} />
             </TouchableOpacity>
           )}
         </View>
@@ -74,6 +86,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
             <OnboardingSlide
               slide={currentSlideData}
               isActive={true}
+              theme={theme}
             />
           )}
         </View>
@@ -83,6 +96,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
           <TouchableOpacity
             style={[
               styles.nextButton,
+              { backgroundColor: theme?.buttonBackgroundColor || '#6B8E5A' },
               isLastSlide && styles.completeButton,
             ]}
             onPress={onNext}
@@ -90,6 +104,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
           >
             <Text style={[
               styles.nextButtonText,
+              { color: theme?.buttonTextColor || 'white' },
               isLastSlide && styles.completeButtonText,
             ]}>
               {isLastSlide ? 'Get Started' : 'Next'}

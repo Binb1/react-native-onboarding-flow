@@ -13,7 +13,7 @@ import { createFadeInAnimation, createSlideUpAnimation, createScaleInAnimation }
 
 const { width, height } = Dimensions.get('window');
 
-const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive }) => {
+const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, theme }) => {
   const mediaOpacity = useRef(new Animated.Value(0)).current;
   const titleOpacity = useRef(new Animated.Value(0)).current;
   const descriptionOpacity = useRef(new Animated.Value(0)).current;
@@ -102,6 +102,7 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive }) =>
         <Animated.Text
           style={[
             styles.title,
+            { color: theme?.titleColor || '#2F4F2F' },
             {
               opacity: titleOpacity,
               transform: [{ translateY: titleTranslateY }],
@@ -114,6 +115,7 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive }) =>
         <Animated.Text
           style={[
             styles.description,
+            { color: theme?.descriptionColor || '#666' },
             {
               opacity: descriptionOpacity,
               transform: [{ translateY: descriptionTranslateY }],
@@ -161,14 +163,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#2F4F2F',
     textAlign: 'center',
     marginBottom: 16,
     lineHeight: 34,
   },
   description: {
     fontSize: 16,
-    color: '#666',
     textAlign: 'center',
     lineHeight: 24,
     paddingHorizontal: 20,
