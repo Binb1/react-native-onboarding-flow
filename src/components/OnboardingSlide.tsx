@@ -25,7 +25,6 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
 
   useEffect(() => {
     if (isActive) {
-      // Reset animations
       mediaOpacity.setValue(0);
       titleOpacity.setValue(0);
       descriptionOpacity.setValue(0);
@@ -33,11 +32,10 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
       descriptionTranslateY.setValue(30);
       mediaScale.setValue(0.8);
 
-      // Start animations with staggered timing
       const animations = [];
+      const animationType = slide.animation || 'fadeIn';
 
-      // Media animation (works for both image and video)
-      if (slide.animation === 'scaleIn') {
+      if (animationType === 'scaleIn') {
         animations.push(createScaleInAnimation(mediaScale, 600, 200));
         animations.push(createFadeInAnimation(mediaOpacity, 400, 200));
       } else {
@@ -45,17 +43,14 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
         animations.push(createScaleInAnimation(mediaScale, 400, 200));
       }
 
-      // Title animation
       animations.push(createFadeInAnimation(titleOpacity, 400, 600));
       animations.push(createSlideUpAnimation(titleTranslateY, 400, 600));
-
-      // Description animation
       animations.push(createFadeInAnimation(descriptionOpacity, 400, 800));
       animations.push(createSlideUpAnimation(descriptionTranslateY, 400, 800));
 
       Animated.parallel(animations).start();
     }
-  }, [isActive, slide.animation]);
+  }, [isActive]);
 
   const renderMedia = () => {
     const mediaStyle = [

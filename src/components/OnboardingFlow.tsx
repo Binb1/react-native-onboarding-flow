@@ -11,20 +11,18 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
   theme,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
   const handleNext = () => {
     if (currentSlide < slides.length - 1) {
       setCurrentSlide(currentSlide + 1);
     } else {
-      // Last slide - complete onboarding
-      setCurrentSlide(0); // Reset for next time
+      setCurrentSlide(0);
       onComplete();
     }
   };
 
   const handleClose = () => {
     if (closeable) {
-      setCurrentSlide(0); // Reset for next time
+      setCurrentSlide(0);
       onComplete();
     }
   };
