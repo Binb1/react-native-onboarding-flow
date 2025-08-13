@@ -1,6 +1,6 @@
 # React Native Custom Onboarding 🚀
 
-Beautiful, customizable onboarding flows for React Native with smooth animations.
+Beautiful, customizable onboarding flows for React Native with smooth animations and video support.
 
 ## Features ✨
 
@@ -16,12 +16,12 @@ Beautiful, customizable onboarding flows for React Native with smooth animations
 ## Installation
 
 ```bash
-npm install react-native-custom-onboarding
+npm install react-native-custom-onboarding expo-av
 # or
-yarn add react-native-custom-onboarding
+yarn add react-native-custom-onboarding expo-av
 ```
 
-## Usage
+## Basic Usage
 
 ```tsx
 import React, { useState } from 'react';
@@ -34,32 +34,25 @@ const App = () => {
     {
       id: 'welcome',
       media: {
-        type: 'image',
-        source: require('./assets/welcome.png'),
-      },
-      title: 'Welcome to MyApp',
-      description: 'Discover amazing features',
-      animation: 'fadeIn',
-    },
-    {
-      id: 'demo',
-      media: {
         type: 'video',
-        source: require('./assets/demo.mp4'),
+        source: require('./assets/welcome-video.mp4'),
         autoPlay: true,
         loop: true,
-        muted: false,
+        muted: true,
       },
-      title: 'See It In Action',
-      description: 'Watch how easy it is to use',
+      title: 'Welcome to Our App',
+      description: 'Experience the future of mobile apps',
       animation: 'scaleIn',
     },
     {
       id: 'features',
-      image: require('./assets/features.png'), // Legacy format still supported
+      media: {
+        type: 'image',
+        source: require('./assets/features.png'),
+      },
       title: 'Powerful Features',
       description: 'Everything you need in one place',
-      animation: 'slideUp',
+      animation: 'fadeIn',
     },
   ];
 
@@ -92,26 +85,25 @@ const App = () => {
 ```tsx
 interface OnboardingSlideData {
   id: string;
-  // New media object - supports both images and videos
-  media?: {
+  media: {
     type: 'image' | 'video';
     source: any; // require() asset
     autoPlay?: boolean; // For videos (default: true)
-    loop?: boolean; // For videos (default: true)
+    loop?: boolean; // For videos (default: true)  
     muted?: boolean; // For videos (default: true)
   };
-  // Legacy support - will be deprecated
-  image?: any; // require() asset - DEPRECATED, use media instead
   title: string;
   description: string;
   animation?: 'fadeIn' | 'slideUp' | 'scaleIn';
 }
 ```
 
-### Video Configuration Options
+### Media Configuration
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
+| `type` | `'image' \| 'video'` | **required** | Media type |
+| `source` | `any` | **required** | Asset source (require()) |
 | `autoPlay` | `boolean` | `true` | Auto-play videos when slide becomes active |
 | `loop` | `boolean` | `true` | Loop videos continuously |
 | `muted` | `boolean` | `true` | Start videos muted |

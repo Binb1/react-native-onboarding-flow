@@ -21,8 +21,7 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive }) =>
   const descriptionTranslateY = useRef(new Animated.Value(30)).current;
   const mediaScale = useRef(new Animated.Value(0.8)).current;
   
-  // Determine media source and type (supports legacy image prop)
-  const mediaData = slide.media || (slide.image ? { type: 'image' as const, source: slide.image } : null);
+  const mediaData = slide.media;
 
   useEffect(() => {
     if (isActive) {
@@ -59,8 +58,6 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive }) =>
   }, [isActive, slide.animation]);
 
   const renderMedia = () => {
-    if (!mediaData) return null;
-
     const mediaStyle = [
       styles.media,
       {
@@ -83,16 +80,16 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive }) =>
           />
         </Animated.View>
       );
-    } else {
-      return (
-        <Animated.Image
-          source={mediaData.source}
-          style={mediaStyle}
-          resizeMode="contain"
-          onError={(error: any) => console.log('Image load error:', error)}
-        />
-      );
     }
+
+    return (
+      <Animated.Image
+        source={mediaData.source}
+        style={mediaStyle}
+        resizeMode="contain"
+        onError={(error: any) => console.log('Image load error:', error)}
+      />
+    );
   };
 
   return (

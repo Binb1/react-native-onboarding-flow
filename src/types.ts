@@ -1,15 +1,12 @@
 export interface OnboardingSlideData {
   id: string;
-  // New media object - supports both images and videos
-  media?: {
+  media: {
     type: 'image' | 'video';
     source: any; // require() asset
-    autoPlay?: boolean; // For videos
-    loop?: boolean; // For videos
-    muted?: boolean; // For videos
+    autoPlay?: boolean; // For videos (default: true)
+    loop?: boolean; // For videos (default: true)
+    muted?: boolean; // For videos (default: true)
   };
-  // Legacy support - will be deprecated
-  image?: any; // require() asset - DEPRECATED, use media instead
   title: string;
   description: string;
   animation?: 'fadeIn' | 'slideUp' | 'scaleIn';
