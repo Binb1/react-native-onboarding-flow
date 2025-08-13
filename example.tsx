@@ -9,7 +9,7 @@ const OnboardingExample = () => {
     {
       id: 'welcome',
       media: {
-        type: 'video' as const,
+        type: 'video',
         source: require('./assets/welcome-video.mp4'),
         autoPlay: true,
         loop: true,
@@ -17,27 +17,27 @@ const OnboardingExample = () => {
       },
       title: 'Welcome to Our App',
       description: 'Experience the future of mobile apps',
-      animation: 'scaleIn' as const,
+      animation: 'scaleIn',
     },
     {
       id: 'features',
       media: {
-        type: 'image' as const,
+        type: 'image',
         source: require('./assets/features.png'),
       },
       title: 'Powerful Features',
       description: 'Everything you need in one place',
-      animation: 'fadeIn' as const,
+      animation: 'fadeIn',
     },
     {
       id: 'start',
       media: {
-        type: 'image' as const,
+        type: 'image',
         source: require('./assets/rocket.png'),
       },
       title: 'Ready to Begin?',
       description: 'Let\'s get started on your journey',
-      animation: 'slideUp' as const,
+      animation: 'slideUp',
     },
   ];
 

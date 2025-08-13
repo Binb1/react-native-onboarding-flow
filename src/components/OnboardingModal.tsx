@@ -7,7 +7,6 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
-  AccessibilityInfo,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { OnboardingModalProps } from '../types';
@@ -28,14 +27,6 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
   const isValidSlide = currentSlide >= 0 && currentSlide < slides.length;
   const isLastSlide = isValidSlide && currentSlide === slides.length - 1;
   const currentSlideData = isValidSlide ? slides[currentSlide] : null;
-
-  // Announce slide changes to screen readers
-  React.useEffect(() => {
-    if (visible && currentSlideData) {
-      const announcement = `${currentSlideData.title}. Slide ${currentSlide + 1} of ${slides.length}. ${currentSlideData.description}`;
-      AccessibilityInfo.announceForAccessibility(announcement);
-    }
-  }, [currentSlide, visible, currentSlideData, slides.length]);
 
   const renderProgressDots = () => {
     if (!showProgress) return null;
