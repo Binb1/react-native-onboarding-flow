@@ -23,8 +23,9 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
   closeable,
   showProgress,
 }) => {
-  const isLastSlide = currentSlide === slides.length - 1;
-  const currentSlideData = slides[currentSlide];
+  const isValidSlide = currentSlide >= 0 && currentSlide < slides.length;
+  const isLastSlide = isValidSlide && currentSlide === slides.length - 1;
+  const currentSlideData = isValidSlide ? slides[currentSlide] : null;
 
   const renderProgressDots = () => {
     if (!showProgress) return null;
@@ -70,11 +71,16 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
 
         {/* Slide content */}
         <View style={styles.slideContainer}>
-          {currentSlideData && (
+          {currentSlideData && currentSlideData.media && (
             <OnboardingSlide
               slide={currentSlideData}
               isActive={true}
             />
+          )}
+          {!currentSlideData && (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>Unable to load slide</Text>
+            </View>
           )}
         </View>
 
@@ -150,6 +156,16 @@ const styles = StyleSheet.create({
   slideContainer: {
     flex: 1,
     paddingHorizontal: 0,
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
   },
   footer: {
     paddingHorizontal: 30,
