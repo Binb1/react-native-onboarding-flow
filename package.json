@@ -15,13 +15,17 @@
     "typescript",
     "expo",
     "slides",
-    "intro"
+    "intro",
+    "video",
+    "image",
+    "customizable",
+    "flow"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "binb1",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/react-native-custom-onboarding.git"
+    "url": "https://github.com/binb1/react-native-custom-onboarding.git"
   },
   "peerDependencies": {
     "@expo/vector-icons": ">=13.0.0",
@@ -38,8 +42,5 @@
     "lib",
     "src",
     "README.md"
-  ],
-  "dependencies": {
-    "react-native-custom-onboarding": "file:react-native-custom-onboarding-1.0.0.tgz"
-  }
+  ]
 }
