@@ -17,6 +17,8 @@ export interface OnboardingSlideData {
     autoPlay?: boolean; // For videos (default: true)
     loop?: boolean; // For videos (default: true)
     muted?: boolean; // For videos (default: true)
+    width?: number; // Custom width in pixels
+    height?: number; // Custom height in pixels
   };
   title: string;
   description: string;

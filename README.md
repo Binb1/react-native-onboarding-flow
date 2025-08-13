@@ -49,6 +49,8 @@ const App = () => {
       media: {
         type: 'image',
         source: require('./assets/features.png'),
+        width: 300,
+        height: 200,
       },
       title: 'Powerful Features',
       description: 'Everything you need in one place',
@@ -137,6 +139,8 @@ interface OnboardingSlideData {
 | `autoPlay` | `boolean` | `true` | Auto-play videos when slide becomes active |
 | `loop` | `boolean` | `true` | Loop videos continuously |
 | `muted` | `boolean` | `true` | Start videos muted |
+| `width` | `number` | `screenWidth * 0.6` | Custom width in pixels (default: 60% of screen width) |
+| `height` | `number` | `screenWidth * 0.6` | Custom height in pixels (default: 60% of screen width) |
 
 ### Theme Colors
 
@@ -159,4 +163,4 @@ interface OnboardingSlideData {
 
 ## License
 
-MIT © [Your Name]
+MIT © Binb1

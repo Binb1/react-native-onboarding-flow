@@ -56,6 +56,8 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
     const mediaStyle = [
       styles.media,
       {
+        width: mediaData.width || width * 0.6,
+        height: mediaData.height || width * 0.6,
         opacity: mediaOpacity,
         transform: [{ scale: mediaScale }],
       },
@@ -139,10 +141,7 @@ const styles = StyleSheet.create({
     maxHeight: height * 0.4,
   },
   media: {
-    width: width * 0.6,
-    height: width * 0.6,
-    maxWidth: 240,
-    maxHeight: 240,
+    // Size is now controlled by mediaStyle in renderMedia()
   },
   video: {
     width: '100%',
