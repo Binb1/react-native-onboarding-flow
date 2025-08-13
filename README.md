@@ -14,6 +14,11 @@ Beautiful, customizable onboarding flows for **Expo React Native** apps with smo
 - 📊 **Progress indicators** - Visual progress dots
 - 🔒 **Closeable control** - Prevent/allow closing
 
+## Demo
+https://github.com/user-attachments/assets/310fdcf8-bd8f-4a3b-bdde-a03c0ed7b8a6
+
+
+
 ## Requirements
 
 - **Expo React Native** app (uses `expo-av` for video support)
