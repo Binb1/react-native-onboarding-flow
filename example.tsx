@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import { OnboardingFlow } from 'react-native-custom-onboarding';
+import { OnboardingFlow } from 'react-native-onboarding-flow';
 
 const OnboardingExample = () => {
   const [showOnboarding, setShowOnboarding] = useState(false);

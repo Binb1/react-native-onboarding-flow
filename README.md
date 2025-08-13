@@ -1,6 +1,6 @@
-# React Native Custom Onboarding 🚀
+# React Native Onboarding Flow 🚀
 
-Beautiful, customizable onboarding flows for React Native with smooth animations and video support.
+Beautiful, customizable onboarding flows for **Expo React Native** apps with smooth animations and video support.
 
 ## Features ✨
 
@@ -9,23 +9,34 @@ Beautiful, customizable onboarding flows for React Native with smooth animations
 - 🎥 **Image & Video support** - Use images or MP4 videos
 - 📱 **TypeScript first** - Full type safety
 - 🎯 **Minimal dependencies** - Only expo-av for videos
+- 📱 **Expo compatible** - Designed for Expo React Native projects
 - 🎪 **Highly customizable** - Control every aspect
 - 📊 **Progress indicators** - Visual progress dots
 - 🔒 **Closeable control** - Prevent/allow closing
 
+## Requirements
+
+- **Expo React Native** app (uses `expo-av` for video support)
+- React Native >= 0.60.0
+- Expo SDK >= 49.0.0
+
 ## Installation
 
+Install the package along with its peer dependency:
+
 ```bash
-npm install react-native-custom-onboarding expo-av
+npm install react-native-onboarding-flow expo-av
 # or
-yarn add react-native-custom-onboarding expo-av
+yarn add react-native-onboarding-flow expo-av
 ```
+
+**Why install `expo-av`?** It's a peer dependency needed for video playback. This prevents version conflicts and keeps your bundle size optimized.
 
 ## Basic Usage
 
 ```tsx
 import React, { useState } from 'react';
-import { OnboardingFlow } from 'react-native-custom-onboarding';
+import { OnboardingFlow } from 'react-native-onboarding-flow';
 
 const App = () => {
   const [showOnboarding, setShowOnboarding] = useState(true);
