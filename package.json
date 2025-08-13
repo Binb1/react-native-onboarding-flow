@@ -1,5 +1,5 @@
 {
-  "name": "react-native-custom-onboarding",
+  "name": "react-native-onboarding-flow",
   "version": "1.0.0",
   "description": "Beautiful, customizable onboarding flows for React Native with smooth animations",
   "main": "lib/index.js",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/binb1/react-native-custom-onboarding.git"
+    "url": "https://github.com/binb1/react-native-onboarding-flow.git"
   },
   "peerDependencies": {
     "@expo/vector-icons": ">=13.0.0",
