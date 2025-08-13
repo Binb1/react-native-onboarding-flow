@@ -1,0 +1,45 @@
+{
+  "name": "react-native-custom-onboarding",
+  "version": "1.0.0",
+  "description": "Beautiful, customizable onboarding flows for React Native with smooth animations",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "react-native",
+    "onboarding",
+    "modal",
+    "animations",
+    "typescript",
+    "expo",
+    "slides",
+    "intro"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/react-native-custom-onboarding.git"
+  },
+  "peerDependencies": {
+    "@expo/vector-icons": ">=13.0.0",
+    "expo-av": ">=14.0.0",
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "expo-av": "^15.1.7",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "lib",
+    "src",
+    "README.md"
+  ],
+  "dependencies": {
+    "react-native-custom-onboarding": "file:react-native-custom-onboarding-1.0.0.tgz"
+  }
+}
