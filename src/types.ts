@@ -1,3 +1,14 @@
+export interface OnboardingTheme {
+  backgroundColor?: string;
+  titleColor?: string;
+  descriptionColor?: string;
+  buttonBackgroundColor?: string;
+  buttonTextColor?: string;
+  progressDotColor?: string;
+  progressDotActiveColor?: string;
+  closeButtonColor?: string;
+}
+
 export interface OnboardingSlideData {
   id: string;
   media: {
@@ -18,6 +29,7 @@ export interface OnboardingFlowProps {
   onComplete: () => void;
   closeable?: boolean;
   showProgress?: boolean;
+  theme?: OnboardingTheme;
 }
 
 export interface OnboardingModalProps {
@@ -28,9 +40,11 @@ export interface OnboardingModalProps {
   onClose?: () => void;
   closeable: boolean;
   showProgress: boolean;
+  theme?: OnboardingTheme;
 }
 
 export interface OnboardingSlideProps {
   slide: OnboardingSlideData;
   isActive: boolean;
+  theme?: OnboardingTheme;
 }

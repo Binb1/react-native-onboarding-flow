@@ -8,6 +8,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
   onComplete,
   closeable = false,
   showProgress = true,
+  theme,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -42,6 +43,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
       onClose={closeable ? handleClose : undefined}
       closeable={closeable}
       showProgress={showProgress}
+      theme={theme}
     />
   );
 };

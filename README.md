@@ -68,6 +68,35 @@ const App = () => {
 };
 ```
 
+## Custom Theme
+
+```tsx
+const App = () => {
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+  // Custom theme colors
+  const theme = {
+    backgroundColor: '#1a1a1a',
+    titleColor: '#ffffff',
+    descriptionColor: '#cccccc',
+    buttonBackgroundColor: '#007AFF',
+    buttonTextColor: '#ffffff',
+    progressDotColor: '#333333',
+    progressDotActiveColor: '#007AFF',
+    closeButtonColor: '#cccccc',
+  };
+
+  return (
+    <OnboardingFlow
+      slides={slides}
+      visible={showOnboarding}
+      onComplete={() => setShowOnboarding(false)}
+      theme={theme}
+    />
+  );
+};
+```
+
 ## API Reference
 
 ### OnboardingFlow Props
@@ -79,6 +108,7 @@ const App = () => {
 | `onComplete` | `() => void` | **required** | Called when onboarding completes |
 | `closeable` | `boolean` | `false` | Allow users to close before completion |
 | `showProgress` | `boolean` | `true` | Show progress dots |
+| `theme` | `OnboardingTheme` | `undefined` | Custom colors |
 
 ### Slide Data Structure
 
@@ -107,6 +137,19 @@ interface OnboardingSlideData {
 | `autoPlay` | `boolean` | `true` | Auto-play videos when slide becomes active |
 | `loop` | `boolean` | `true` | Loop videos continuously |
 | `muted` | `boolean` | `true` | Start videos muted |
+
+### Theme Colors
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `backgroundColor` | `string` | `'white'` | Modal background color |
+| `titleColor` | `string` | `'#2F4F2F'` | Title text color |
+| `descriptionColor` | `string` | `'#666'` | Description text color |
+| `buttonBackgroundColor` | `string` | `'#6B8E5A'` | Next button background |
+| `buttonTextColor` | `string` | `'white'` | Next button text color |
+| `progressDotColor` | `string` | `'#E5E5E5'` | Inactive dot color |
+| `progressDotActiveColor` | `string` | `'#6B8E5A'` | Active dot color |
+| `closeButtonColor` | `string` | `'#666'` | Close button icon color |
 
 ## Animation Types
 
