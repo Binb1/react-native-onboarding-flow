@@ -88,6 +88,11 @@ const App = () => {
       slides={slides}
       visible={showOnboarding}
       onComplete={() => setShowOnboarding(false)}
+      onLastPageComplete={() => {
+        // Triggered when user clicks next on the last page
+        console.log('User completed the last page!');
+        // You can perform specific actions here before onComplete is called
+      }}
       closeable={false}
       showProgress={true}
     />
@@ -133,6 +138,7 @@ const App = () => {
 | `slides` | `OnboardingSlideData[]` | **required** | Array of slide data |
 | `visible` | `boolean` | **required** | Controls modal visibility |
 | `onComplete` | `() => void` | **required** | Called when onboarding completes |
+| `onLastPageComplete` | `() => void` | `undefined` | Called when user clicks next on the last page |
 | `closeable` | `boolean` | `false` | Allow users to close before completion |
 | `showProgress` | `boolean` | `true` | Show progress dots |
 | `theme` | `OnboardingTheme` | `undefined` | Custom colors |
