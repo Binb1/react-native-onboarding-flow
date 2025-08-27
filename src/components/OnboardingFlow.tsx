@@ -6,6 +6,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
   slides,
   visible,
   onComplete,
+  onLastPageComplete,
   closeable = false,
   showProgress = true,
   theme,
@@ -16,6 +17,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
       setCurrentSlide(currentSlide + 1);
     } else {
       setCurrentSlide(0);
+      onLastPageComplete?.();
       onComplete();
     }
   };
