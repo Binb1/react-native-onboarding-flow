@@ -29,7 +29,6 @@ export interface OnboardingFlowProps {
   slides: OnboardingSlideData[];
   visible: boolean;
   onComplete: () => void;
-  onLastPageComplete?: () => void;
   closeable?: boolean;
   showProgress?: boolean;
   theme?: OnboardingTheme;
