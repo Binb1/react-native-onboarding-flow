@@ -22,6 +22,7 @@ Beautiful, customizable onboarding flows for **Expo React Native** apps with smo
 - 🎪 **Highly customizable** - Control every aspect
 - 📊 **Progress indicators** - Visual progress dots
 - 🔒 **Closeable control** - Prevent/allow closing
+- 💰 **Paywall support** - Display custom paywall after onboarding
 
 ## Demo
 https://github.com/user-attachments/assets/310fdcf8-bd8f-4a3b-bdde-a03c0ed7b8a6
@@ -95,6 +96,47 @@ const App = () => {
 };
 ```
 
+## Paywall Integration
+
+Display a custom paywall component after the onboarding completes:
+
+```tsx
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { OnboardingFlow } from 'react-native-onboarding-flow';
+
+const MyPaywall = ({ onComplete }) => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+    <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20 }}>
+      Unlock Premium Features
+    </Text>
+    <Text style={{ fontSize: 16, textAlign: 'center', marginBottom: 30 }}>
+      Get access to all features with our premium subscription
+    </Text>
+    <TouchableOpacity
+      style={{ backgroundColor: '#007AFF', padding: 15, borderRadius: 25 }}
+      onPress={onComplete} // This will close the onboarding flow
+    >
+      <Text style={{ color: 'white', fontSize: 16 }}>Start Free Trial</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+const App = () => {
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+  return (
+    <OnboardingFlow
+      slides={slides}
+      visible={showOnboarding}
+      onComplete={() => setShowOnboarding(false)}
+      showPaywall={true}
+      paywallComponent={<MyPaywall />}
+    />
+  );
+};
+```
+
 ## Custom Theme
 
 ```tsx
@@ -136,6 +178,8 @@ const App = () => {
 | `closeable` | `boolean` | `false` | Allow users to close before completion |
 | `showProgress` | `boolean` | `true` | Show progress dots |
 | `theme` | `OnboardingTheme` | `undefined` | Custom colors |
+| `showPaywall` | `boolean` | `false` | Show paywall after last slide |
+| `paywallComponent` | `React.ReactNode` | `undefined` | Custom paywall component |
 
 ### Slide Data Structure
 
