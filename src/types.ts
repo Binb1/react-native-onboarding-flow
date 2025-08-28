@@ -32,6 +32,8 @@ export interface OnboardingFlowProps {
   closeable?: boolean;
   showProgress?: boolean;
   theme?: OnboardingTheme;
+  showPaywall?: boolean;
+  paywallComponent?: React.ReactNode;
 }
 
 export interface OnboardingModalProps {
@@ -43,6 +45,8 @@ export interface OnboardingModalProps {
   closeable: boolean;
   showProgress: boolean;
   theme?: OnboardingTheme;
+  showPaywall?: boolean;
+  paywallComponent?: React.ReactNode;
 }
 
 export interface OnboardingSlideProps {
