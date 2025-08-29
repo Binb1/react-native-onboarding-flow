@@ -19,6 +19,7 @@ export interface OnboardingSlideData {
     muted?: boolean; // For videos (default: true)
     width?: number; // Custom width in pixels
     height?: number; // Custom height in pixels
+    borderRadius?: number; // Custom border radius in pixels
   };
   title: string;
   description: string;

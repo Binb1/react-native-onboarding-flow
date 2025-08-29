@@ -60,15 +60,24 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
         height: mediaData.height || width * 0.6,
         opacity: mediaOpacity,
         transform: [{ scale: mediaScale }],
+        borderRadius: mediaData.borderRadius,
+        overflow: 'hidden',
       },
     ];
 
     if (mediaData.type === 'video') {
+      const videoStyle = [
+        styles.video,
+        {
+          borderRadius: mediaData.borderRadius || 12,
+        },
+      ];
+
       return (
         <Animated.View style={mediaStyle}>
           <Video
             source={mediaData.source}
-            style={styles.video}
+            style={videoStyle}
             resizeMode={ResizeMode.CONTAIN}
             shouldPlay={isActive && (mediaData.autoPlay !== false)}
             isLooping={mediaData.loop !== false}
