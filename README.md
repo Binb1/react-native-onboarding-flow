@@ -77,6 +77,7 @@ const App = () => {
         source: require('./assets/features.png'),
         width: 300,
         height: 200,
+        borderRadius: 20,
       },
       title: 'Powerful Features',
       description: 'Everything you need in one place',
@@ -192,6 +193,9 @@ interface OnboardingSlideData {
     autoPlay?: boolean; // For videos (default: true)
     loop?: boolean; // For videos (default: true)  
     muted?: boolean; // For videos (default: true)
+    width?: number; // Custom width in pixels
+    height?: number; // Custom height in pixels
+    borderRadius?: number; // Custom border radius in pixels
   };
   title: string;
   description: string;
@@ -210,6 +214,7 @@ interface OnboardingSlideData {
 | `muted` | `boolean` | `true` | Start videos muted |
 | `width` | `number` | `screenWidth * 0.6` | Custom width in pixels (default: 60% of screen width) |
 | `height` | `number` | `screenWidth * 0.6` | Custom height in pixels (default: 60% of screen width) |
+| `borderRadius` | `number` | `12` (videos), `undefined` (images) | Border radius in pixels |
 
 ### Theme Colors
 
