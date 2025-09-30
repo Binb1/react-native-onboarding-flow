@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { OnboardingSlideProps } from '../types';
@@ -104,7 +105,12 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
         {renderMedia()}
       </View>
 
-      <View style={styles.textContainer}>
+      <ScrollView
+        style={styles.textContainer}
+        contentContainerStyle={styles.textContentContainer}
+        showsVerticalScrollIndicator={false}
+        bounces={false}
+      >
         <Animated.Text
           style={[
             styles.title,
@@ -130,7 +136,7 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
         >
           {slide.description}
         </Animated.Text>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -159,9 +165,11 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
     paddingTop: 40,
+  },
+  textContentContainer: {
+    alignItems: 'center',
+    paddingBottom: 20,
   },
   title: {
     fontSize: 28,
