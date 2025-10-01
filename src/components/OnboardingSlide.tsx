@@ -54,11 +54,14 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
   }, [isActive]);
 
   const renderMedia = () => {
+    const defaultSize = Math.min(width * 0.6, height * 0.3);
     const mediaStyle = [
       styles.media,
       {
-        width: mediaData.width || width * 0.6,
-        height: mediaData.height || width * 0.6,
+        width: mediaData.width || defaultSize,
+        height: mediaData.height || defaultSize,
+        maxWidth: width * 0.8,
+        maxHeight: height * 0.35,
         opacity: mediaOpacity,
         transform: [{ scale: mediaScale }],
         borderRadius: mediaData.borderRadius,
@@ -145,15 +148,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     paddingHorizontal: 40,
+    paddingTop: 20,
   },
   mediaContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    maxHeight: height * 0.4,
+    maxHeight: height * 0.35,
+    minHeight: height * 0.25,
+    marginBottom: 30,
   },
   media: {
     // Size is now controlled by mediaStyle in renderMedia()
@@ -165,11 +169,12 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
-    paddingTop: 40,
+    width: '100%',
   },
   textContentContainer: {
     alignItems: 'center',
     paddingBottom: 20,
+    flexGrow: 1,
   },
   title: {
     fontSize: 28,
