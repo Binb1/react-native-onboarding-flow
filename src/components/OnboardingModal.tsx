@@ -102,8 +102,8 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({
               <TouchableOpacity
                 style={[
                   styles.nextButton,
-                  { backgroundColor: theme?.buttonBackgroundColor || '#6B8E5A' },
                   isLastSlide && styles.completeButton,
+                  { backgroundColor: theme?.buttonBackgroundColor || (isLastSlide ? '#2F4F2F' : '#6B8E5A') },
                 ]}
                 onPress={onNext}
                 activeOpacity={0.8}
