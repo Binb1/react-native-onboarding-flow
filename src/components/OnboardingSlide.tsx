@@ -8,8 +8,18 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import { Video, ResizeMode } from 'expo-av';
 import { OnboardingSlideProps } from '../types';
+
+let _Video: any;
+let _ResizeMode: any;
+function getExpoAV() {
+  if (!_Video) {
+    const av = require('expo-av');
+    _Video = av.Video;
+    _ResizeMode = av.ResizeMode;
+  }
+  return { Video: _Video, ResizeMode: _ResizeMode };
+}
 import { createFadeInAnimation, createSlideUpAnimation, createScaleInAnimation } from '../animations';
 
 const { width, height } = Dimensions.get('window');
@@ -70,6 +80,7 @@ const OnboardingSlide: React.FC<OnboardingSlideProps> = ({ slide, isActive, them
     ];
 
     if (mediaData.type === 'video') {
+      const { Video, ResizeMode } = getExpoAV();
       const videoStyle = [
         styles.video,
         {
