@@ -14,9 +14,15 @@ let _Video: any;
 let _ResizeMode: any;
 function getExpoAV() {
   if (!_Video) {
-    const av = require('expo-av');
-    _Video = av.Video;
-    _ResizeMode = av.ResizeMode;
+    try {
+      const av = require('expo-av');
+      _Video = av.Video;
+      _ResizeMode = av.ResizeMode;
+    } catch (e) {
+      throw new Error(
+        'expo-av is required for video slides. Install it with: npx expo install expo-av'
+      );
+    }
   }
   return { Video: _Video, ResizeMode: _ResizeMode };
 }
