@@ -15,7 +15,8 @@ let _ResizeMode: any;
 function getExpoAV() {
   if (!_Video) {
     try {
-      const av = require('expo-av');
+      const expoAv = ['expo', 'av'].join('-');
+      const av = require(expoAv);
       _Video = av.Video;
       _ResizeMode = av.ResizeMode;
     } catch (e) {
